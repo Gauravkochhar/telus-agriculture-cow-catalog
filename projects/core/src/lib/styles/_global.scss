@@ -1,0 +1,14 @@
+@use "variables" as *;
+@import "~primeicons/primeicons.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="cow-card" (click)="onCardClick()">
+  <div class="cow-card__header">
+    <div class="cow-card__title-group">
+      <i class="pi pi-id-card cow-card__icon"></i>
+      <h5 class="cow-card__title mb-0">{{ cow()?.earTag }}</h5>
+    </div>
+    <span [ngClass]="statusBadgeClass" class="cow-card__status">
+      <i class="pi pi-info-circle"></i> {{ cow()?.status }}
+    </span>
+  </div>
+
+  <div class="cow-card__body">
+    <div class="cow-card__row">
+      <i class="pi pi-user"></i> <span>{{ cow()?.gender }}</span>
+    </div>
+    <div class="cow-card__row">
+      <i class="pi pi-map-marker"></i> <span><strong>Pen:</strong> {{ cow()?.pen }}</span>
+    </div>
+    <div class="cow-card__row cow-card__row--muted">
+      <i class="pi pi-calendar"></i> <span><strong>Last Event:</strong> {{ cow()?.lastEventDate | date:'mediumDate' }}</span>
+    </div>
+  </div>
+</div>

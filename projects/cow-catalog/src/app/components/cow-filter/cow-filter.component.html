@@ -1,0 +1,72 @@
+<!-- Mobile filter toggle button -->
+<div class="cow-filter__toggle d-md-none">
+  <button
+    pButton
+    type="button"
+    class="p-button-secondary"
+    icon="pi pi-filter"
+    label="Filters"
+    (click)="toggleSidebar()">
+  </button>
+</div>
+
+<!-- Mobile sidebar drawer -->
+<p-drawer
+  [(visible)]="displaySidebar"
+  position="left"
+  [modal]="true"
+  [style.width.px]="300"
+  class="cow-filter__drawer d-md-none">
+  
+  <!-- Reusable filter template inside drawer -->
+  <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
+</p-drawer>
+
+<!-- Inline filters for desktop/tablet -->
+<div class="cow-filter d-none d-md-flex">
+  <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
+</div>
+
+<!-- Reusable filter template -->
+<ng-template #filterTemplate>
+  <form class="d-flex flex-column flex-md-row" [formGroup]="filterForm">
+
+    <!-- Search input field -->
+    <div class="cow-filter__group">
+      <label class="cow-filter__group-label d-md-none" for="search">
+        Search by Tag or Pen
+      </label>
+      <input
+        pInputText
+        id="search"
+        class="cow-filter__group-input"
+        formControlName="search"
+        placeholder="Search by Tag or Pen">
+    </div>
+
+    <!-- Status multi-select dropdown -->
+    <div class="cow-filter__group mt-2 mt-md-0 ml-0 ml-md-3">
+      <label class="cow-filter__group-label d-md-none" for="status">
+        Status
+      </label>
+      <p-multiSelect
+        class="cow-filter__group-multiSelect"
+        [options]="statuses"
+        optionLabel="value"
+        optionValue="value"
+        formControlName="selectedStatuses"
+        defaultLabel="Select Status">
+      </p-multiSelect>
+    </div>
+
+    <!-- Reset filter button -->
+    <button
+      pButton
+      type="button"
+      label="Reset Filter"
+      class="cow-filter__reset p-button-secondary mt-3 mt-md-0 mr-0 mr-md-3 ml-md-3"
+      (click)="resetFilters()">
+    </button>
+
+  </form>
+</ng-template>

@@ -1,0 +1,1 @@
+export { CowService } from "./cow.service";

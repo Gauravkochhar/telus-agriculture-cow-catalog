@@ -1,0 +1,37 @@
+.header {
+    background: #fff;
+    color: #82b440;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1050;
+    padding: 0.75rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &__container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 65px;
+    }
+
+    &__logo {
+        font-size: 1.75rem;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        color: #82b440;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+
+        i {
+            font-size: 36px;
+            color: #82b440;
+            font-weight: 700;
+        }
+
+        &:hover {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+    }
+}

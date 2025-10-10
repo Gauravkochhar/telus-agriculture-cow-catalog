@@ -1,0 +1,47 @@
+<div class="cow-details container mt-4" *ngIf="cow">
+  <!-- Header -->
+  <div class="cow-details__header d-flex justify-content-between align-items-center mb-4">
+    <h2 class="cow-details__title d-flex align-items-center">
+      {{ cow.earTag }} - <span class="badge ml-2" [ngClass]="statusClass">{{ cow.status }}</span>
+    </h2>
+  </div>
+
+  <!-- Basic Info -->
+  <div class="cow-details__info row mb-4">
+    <div class="col-md-3">
+      <strong>Gender:</strong> {{ cow.gender }}
+    </div>
+    <div class="col-md-3">
+      <strong>Pen:</strong> {{ cow.pen }}
+    </div>
+    <div class="col-md-3" *ngIf="cow.weight">
+      <strong>Weight:</strong> {{ cow.weight }} kg
+    </div>
+    <div class="col-md-3" *ngIf="cow.dailyWeightGain">
+      <strong>Daily Gain:</strong> {{ cow.dailyWeightGain }} kg/day
+    </div>
+  </div>
+
+  <!-- Event Timeline -->
+  <div class="cow-details__timeline">
+    <h4>Recent Events</h4>
+    <div *ngIf="cow.events?.length; else noEvents">
+      <div
+        class="cow-event-card mb-3"
+        *ngFor="let event of cow.events | slice:0:10; let i = index"
+      >
+        <div class="cow-event-card__icon">
+          <i class="pi" [ngClass]="getEventIcon(event.type)"></i>
+        </div>
+        <div class="cow-event-card__content">
+          <p class="cow-event-card__type">{{ event.type }}</p>
+          <p class="cow-event-card__desc">{{ event.description }}</p>
+          <small class="cow-event-card__date">{{ event.date | date: 'mediumDate' }}</small>
+        </div>
+      </div>
+    </div>
+    <ng-template #noEvents>
+      <p>No recent events available.</p>
+    </ng-template>
+  </div>
+</div>
