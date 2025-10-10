@@ -73,9 +73,3 @@ yarn.lock
 .DS_Store
 Thumbs.db
 Desktop.ini
-
-# -----------------------
-# Module Federation / Extra
-# -----------------------
-/projects/**/webpack.*.js
-/projects/**/mf-config.js

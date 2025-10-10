@@ -19,6 +19,13 @@
     "prod:catalog:build": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog-prod --delete-output-path",
     "prod:detail:build": "ng build cow-detail --configuration production --output-path=dist/cow-detail-prod --delete-output-path",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "build:platform:gh": "ng build platform --configuration production --base-href '/telus-agriculture-cow-catalog/'",
+    "build:detail:gh": "ng build cow-detail --configuration production --base-href '/telus-agriculture-cow-catalog/cow-detail/'",
+    "build:catalog:gh": "ng build cow-catalog --configuration production --base-href '/telus-agriculture-cow-catalog/cow-catalog/'",
+    "deploy:platform:gh": "npm run build:platform:gh && npx angular-cli-ghpages --dir=dist/platform --branch=master --message='Deploy platform (host)'",
+    "deploy:detail:gh": "npm run build:detail:gh && npx angular-cli-ghpages --dir=dist/cow-detail --branch=master --message='Deploy cow-detail'",
+    "deploy:catalog:gh": "npm run build:catalog:gh && npx angular-cli-ghpages --dir=dist/cow-catalog --branch=master --message='Deploy cow-catalog'",
+    "deploy:all:gh": "npm run deploy:detail:gh && npm run deploy:catalog:gh && npm run deploy:platform:gh",
     "test": "ng test",
     "lint": "ng lint"
   },

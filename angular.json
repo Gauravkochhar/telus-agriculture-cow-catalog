@@ -39,14 +39,14 @@
 							}
 						],
 						"styles": [
-              				"projects/core/src/lib/styles/_global.scss",
+							"projects/core/src/lib/styles/_global.scss",
 							"projects/platform/src/styles.scss"
 						],
 						"scripts": [],
 						"main": "projects/platform/src/main.ts",
 						"extraWebpackConfig": "projects/platform/webpack.config.js",
 						"commonChunk": false,
-            "stylePreprocessorOptions": {
+						"stylePreprocessorOptions": {
 							"includePaths": [
 								"projects/core/src/lib/styles"
 							]
@@ -54,7 +54,7 @@
 					},
 					"configurations": {
 						"production": {
-              "fileReplacements": [
+							"fileReplacements": [
 								{
 									"replace": "projects/platform/src/environments/environment.ts",
 									"with": "projects/platform/src/environments/environment.prod.ts"
@@ -80,7 +80,7 @@
 							"extractLicenses": false,
 							"sourceMap": true
 						},
-            "staging": {
+						"staging": {
 							"fileReplacements": [
 								{
 									"replace": "projects/platform/src/environments/environment.ts",

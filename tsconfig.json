@@ -5,7 +5,7 @@
     "paths": {
       "@digital/core": [
         "./projects/core/src/public-api.ts"
-      ],
+      ]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
