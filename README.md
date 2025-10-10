@@ -1,59 +1,185 @@
-# CowCatalogMf
+# Cow Catalog Microfrontend (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.
+This repository contains a **Microfrontend Angular application** for TELUS Agriculture & Consumer Goods, designed to manage a Cow Catalog. The project is structured using **Module Federation** to support multiple independently deployable applications (shell and remotes).
 
-## Development server
+---
 
-To start a local development server, run:
+## Project Structure
+
+- **cow-shell**: The host application, responsible for loading remote modules.  
+- **cow-catalog**: Remote application containing the list, search/filter features, and cow cards.  
+- **cow-detail**: Remote application showing cow details, timelines, and events.  
+- **core** (optional): Shared library for common components, directives, and pipes used across multiple apps.  
+
+All apps are **non-standalone** Angular modules and use **SCSS** for styling.
+
+---
+
+## Features
+
+1. **Cow List** (CA-01)
+   - Displays cow ear tag, sex, pen, status, and last event date.
+   - Responsive **cow cards** with hover effects and smooth animations.
+   - Filtered results count and proper mobile/tablet/desktop layouts.
+
+2. **Search & Filter** (CA-02)
+   - Search by ear tag or pen (single input for all resolutions).  
+   - Filter by **status** (multi-select) and **pen** (multi-select).  
+   - Mobile uses **p-drawer** for filters, desktop/tablet shows inline filters.  
+   - Filters **persist across navigation**.  
+   - Reset filter button included.
+   - Form value changes are subscribed to emit filter updates dynamically.
+
+3. **Add New Cow Form** (CA-03)
+   - Ear tag (unique, required), sex, pen (required), status (required, default Active), weight (optional).  
+   - Form uses **p-dialog** modal for adding cows.  
+   - Newly added cows reflect immediately in the cow list.
+
+4. **Cow Detail Page** (CA-04)
+   - Shows cow info, weight, daily gain, and recent events timeline.
+   - Reusable **Cow Card Component** is used for listing and detail previews.
+   - Clean styling with gradients, hover effects, and consistent font (`Roboto`).
+
+---
+
+## Technologies
+
+- Angular 19 (latest LTS supported by CLI)  
+- Module Federation with `@angular-architects/module-federation`  
+- RxJS for reactive state management and form subscriptions  
+- SCSS for responsive and modular styling  
+- PrimeNG v19 for UI components (cards, drawers, multi-select, buttons)  
+- Karma & Jasmine for unit testing  
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18.x or v20.x  
+- Angular CLI 19  
+- npm or yarn  
+
+### Installation
 
 ```bash
-ng serve
-```
+git clone <repository-url>
+cd cow-catalog-mf
+npm install
+````
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Running the Applications
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Development Mode (all apps concurrently)
 
 ```bash
-ng generate --help
+npm run start:all
 ```
 
-## Building
+* **cow-shell** → [http://localhost:4200](http://localhost:4200)
+* **cow-catalog** → [http://localhost:4201](http://localhost:4201)
+* **cow-detail** → [http://localhost:4202](http://localhost:4202)
 
-To build the project run:
+### Individual App Development
 
 ```bash
-ng build
+npm run start:shell:dev
+npm run start:catalog:dev
+npm run start:detail:dev
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Build & Watch (development)
 
 ```bash
-ng test
+npm run dev:all
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Environment Specific Builds
+
+### Staging
 
 ```bash
-ng e2e
+npm run stg:shell:build
+npm run stg:catalog:build
+npm run stg:detail:build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+* Output paths: `dist/*-staging`
 
-## Additional Resources
+### Production
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run prod:shell:build
+npm run prod:catalog:build
+npm run prod:detail:build
+```
+
+* Output paths: `dist/*-prod`
+
+**Note**: `--delete-output-path` ensures old builds are cleared before building.
+
+---
+
+## Running Module Federation Dev Server
+
+```bash
+npm run run:all
+```
+
+This launches all apps with Module Federation configuration, allowing shell to consume remote modules during development.
+
+---
+
+## Testing
+
+```bash
+npm run test
+```
+
+* Uses **Karma** & **Jasmine**
+* Runs unit tests for all applications
+
+---
+
+## Linting
+
+```bash
+npm run lint
+```
+
+* Ensures code consistency and best practices
+
+---
+
+## Project Highlights
+
+* Fully modular **microfrontend architecture** with **Module Federation**
+* Clean separation between **host and remote apps**
+* Responsive **cow cards** with hover effects, animations, and gradients
+* **Single input search** with multi-select filters for status and pen
+* Mobile uses **p-drawer**, desktop/tablet shows **inline filters**
+* Filter form value changes are subscribed to emit events dynamically
+* Shared **core library** for reusable components, directives, pipes
+* Environment-specific builds for **dev, staging, and production**
+* Ready for **scalable enterprise projects**
+
+---
+
+## Recommended Improvements (Future Scope)
+
+* Implement **NgRx or state management** for shared data across remotes
+* Add **dynamic forms** using Formly for Cow Add/Edit
+* Include **authentication & authorization**
+* Deploy remotes and shell on **separate servers**
+
+---
+
+## Author
+
+**Gaurav Kochhar**
+Senior Angular Developer | Frontend Architect

@@ -1,0 +1,62 @@
+.cow-details {
+  &__header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    .badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.6rem;
+    }
+  }
+
+  &__info {
+    font-size: 1rem;
+    .col-md-3 {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__timeline {
+    h4 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.cow-event-card {
+  display: flex;
+  align-items: flex-start;
+  border-left: 3px solid #82b440;
+  padding: 0.75rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  position: relative;
+
+  &__icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: #82b440;
+    margin-top: 0.2rem;
+  }
+
+  &__content {
+    .cow-event-card__type {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .cow-event-card__desc {
+      margin-bottom: 0.2rem;
+    }
+
+    .cow-event-card__date {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+  }
+}

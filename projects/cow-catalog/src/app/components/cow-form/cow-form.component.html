@@ -1,0 +1,109 @@
+<form [formGroup]="cowForm" (ngSubmit)="onSubmit()" class="cow-form">
+
+  <!-- Ear Tag -->
+  <div class="cow-form__field">
+    <label for="earTag" class="cow-form__label">
+      Ear Tag <span class="cow-form__required">*</span>
+    </label>
+    <input
+      id="earTag"
+      type="text"
+      pInputText
+      formControlName="earTag"
+      placeholder="Enter Ear Tag"
+      class="cow-form__input" />
+    <small
+      *ngIf="cowForm.get('earTag')?.invalid && cowForm.get('earTag')?.touched"
+      class="cow-form__error">
+      Ear Tag is required
+    </small>
+  </div>
+
+  <!-- Gender -->
+  <div class="cow-form__field">
+    <label for="gender" class="cow-form__label">
+      Gender <span class="cow-form__required">*</span>
+    </label>
+    <p-selectButton
+      [options]="genders"
+      formControlName="gender"
+      optionLabel="label"
+      optionValue="value"
+      class="cow-form__select">
+    </p-selectButton>
+    <small
+      *ngIf="cowForm.get('gender')?.invalid && cowForm.get('gender')?.touched"
+      class="cow-form__error">
+      Gender is required
+    </small>
+  </div>
+
+  <!-- Pen -->
+  <div class="cow-form__field">
+    <label for="pen" class="cow-form__label">
+      Pen <span class="cow-form__required">*</span>
+    </label>
+    <input
+      id="pen"
+      type="text"
+      pInputText
+      formControlName="pen"
+      placeholder="Enter Pen Name"
+      class="cow-form__input" />
+    <small
+      *ngIf="cowForm.get('pen')?.invalid && cowForm.get('pen')?.touched"
+      class="cow-form__error">
+      Pen is required
+    </small>
+  </div>
+
+  <!-- Status -->
+  <div class="cow-form__field">
+    <label for="status" class="cow-form__label">
+      Status <span class="cow-form__required">*</span>
+    </label>
+    <p-selectButton
+      [options]="statuses"
+      formControlName="status"
+      optionLabel="label"
+      optionValue="value"
+      class="cow-form__select">
+    </p-selectButton>
+    <small
+      *ngIf="cowForm.get('status')?.invalid && cowForm.get('status')?.touched"
+      class="cow-form__error">
+      Status is required
+    </small>
+  </div>
+
+  <!-- Weight -->
+  <div class="cow-form__field">
+    <label for="weight" class="cow-form__label">Weight (kg)</label>
+    <p-inputNumber
+      id="weight"
+      formControlName="weight"
+      [min]="0"
+      mode="decimal"
+      placeholder="Optional"
+      class="cow-form__input">
+    </p-inputNumber>
+    <small
+      *ngIf="cowForm.get('weight')?.invalid && cowForm.get('weight')?.touched"
+      class="cow-form__error">
+      Weight must be positive
+    </small>
+  </div>
+
+  <!-- Submit -->
+  <div class="cow-form__actions">
+    <button
+      type="submit"
+      pButton
+      label="Add Cow"
+      class="cow-form__submit p-button-success"
+      [disabled]="cowForm.invalid">
+      <i class="pi pi-plus"></i>
+    </button>
+  </div>
+
+</form>

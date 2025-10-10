@@ -1,0 +1,65 @@
+<div class="container mt-3 cow-list">
+  <div class="row align-items-center mb-3">
+    <div class="col-12 col-md-6">
+      <h3 class="cow-list__title">Cows List</h3>
+    </div>
+  </div>
+
+  <!-- Filter and Add Button Section -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <!-- Filter Component -->
+        <app-cow-filter
+          #filterRef
+          (filterChanged)="applyFilters($event)">
+        </app-cow-filter>
+
+        <!-- Add Cow Button -->
+        <p-button
+          class="ml-2"
+          label="Add New Cow"
+          icon="pi pi-plus"
+          iconPos="left"
+          (click)="openCowForm()">
+        </p-button>
+      </div>
+
+      <hr />
+
+      <!-- Cow Count Summary -->
+      <p class="mb-2 d-none d-md-block">
+        <strong>
+          @if (filteredCowList.length) {
+            {{ filteredCowList.length }}
+            {{ filteredCowList.length > 1 ? 'Cows' : 'Cow' }} found.
+          } @else {
+            No cows found.
+          }
+        </strong>
+      </p>
+    </div>
+
+    <!-- Cow Card List -->
+    <div
+      class="col-12 col-sm-12 col-md-6 col-lg-4"
+      *ngFor="let cow of filteredCowList; trackBy: trackByCowId">
+      <app-cow-card
+        [cow]="cow"
+        (viewDetails)="onViewCowDetails($event)">
+      </app-cow-card>
+    </div>
+  </div>
+</div>
+
+<!-- Add Cow Dialog -->
+<p-dialog
+  header="Add New Cow"
+  [(visible)]="displayAddCowForm"
+  [modal]="true"
+  [closable]="true"
+  [style]="{ width: '800px' }">
+
+  <!-- Cow Form inside dialog -->
+  <app-cow-form (cowAdded)="onCowFormSubmit($event)"></app-cow-form>
+</p-dialog>

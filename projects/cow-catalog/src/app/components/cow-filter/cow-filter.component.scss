@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cow-filter__drawer {
+  padding: 1rem;
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  &__group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &-label {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    &-input {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--color-gray-light);
+      font-size: 0.875rem;
+    }
+
+    &-multiSelect {
+      width: 100%;
+    }
+  }
+
+  &__reset {
+    width: 100%;
+  }
+}
+
+.cow-filter {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    min-width: 260px;
+
+    @media (max-width: 767px) {
+      min-width: unset;
+    }
+
+    &-label {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    &-input,
+    &-multiSelect {
+      font-size: 0.875rem;
+    }
+  }
+
+  &__reset {
+    height: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cow-filter {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .cow-filter__toggle {
+    display: none !important;
+  }
+}
