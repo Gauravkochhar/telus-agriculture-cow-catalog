@@ -3,31 +3,37 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "core:build": "ng build core",
-    "start:all": "concurrently \"npm:start:shell:dev\" \"npm:start:catalog:dev\" \"npm:start:detail:dev\"",
-    "start:shell:dev": "ng serve platform --configuration development --port 4200",
-    "start:catalog:dev": "ng serve cow-catalog --configuration development --port 4201",
-    "start:detail:dev": "ng serve cow-detail --configuration development --port 4202",
-    "dev:all": "concurrently \"npm:dev:shell:build:watch\" \"npm:dev:catalog:build:watch\" \"npm:dev:detail:build:watch\"",
-    "dev:shell:build:watch": "ng build platform --watch --configuration development --verbose",
-    "dev:catalog:build:watch": "ng build cow-catalog --watch --configuration development --verbose",
-    "dev:detail:build:watch": "ng build cow-detail --watch --configuration development --verbose",
-    "stg:shell:build": "ng build platform --configuration staging --output-path=dist/platform-staging --delete-output-path",
-    "stg:catalog:build": "ng build cow-catalog --configuration staging --output-path=dist/cow-catalog-staging --delete-output-path",
-    "stg:detail:build": "ng build cow-detail --configuration staging --output-path=dist/cow-detail-staging --delete-output-path",
-    "prod:shell:build": "ng build platform --configuration production --output-path=dist/platform-prod --delete-output-path",
-    "prod:catalog:build": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog-prod --delete-output-path",
-    "prod:detail:build": "ng build cow-detail --configuration production --output-path=dist/cow-detail-prod --delete-output-path",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
-    "build:platform:gh": "ng build platform --configuration production --base-href '/telus-agriculture-cow-catalog/'",
-    "build:detail:gh": "ng build cow-detail --configuration production --base-href '/telus-agriculture-cow-catalog/cow-detail/'",
-    "build:catalog:gh": "ng build cow-catalog --configuration production --base-href '/telus-agriculture-cow-catalog/cow-catalog/'",
-    "deploy:platform:gh": "npm run build:platform:gh && npx angular-cli-ghpages --dir=dist/platform --branch=master --message='Deploy platform (host)'",
-    "deploy:detail:gh": "npm run build:detail:gh && npx angular-cli-ghpages --dir=dist/cow-detail --branch=master --message='Deploy cow-detail'",
-    "deploy:catalog:gh": "npm run build:catalog:gh && npx angular-cli-ghpages --dir=dist/cow-catalog --branch=master --message='Deploy cow-catalog'",
-    "deploy:all:gh": "npm run deploy:detail:gh && npm run deploy:catalog:gh && npm run deploy:platform:gh",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "core:build": "ng build core",
+    
+    "start:all": "concurrently \"npm run start:host:platform:dev\" \"npm run start:mfe:catalog:dev\" \"npm run start:mfe:detail:dev\"",
+    "dev:all": "concurrently \"npm run dev:host:platform:build:watch\" \"npm run dev:mfe:catalog:build:watch\" \"npm run dev:mfe:detail:build:watch\"",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    
+    "start:host:platform:dev": "ng serve platform --configuration development --port 4200",
+    "dev:host:platform:build:watch": "ng build platform --watch --configuration development --verbose",
+    
+    "start:mfe:catalog:dev": "ng serve cow-catalog --configuration development --port 4201",
+    "dev:mfe:catalog:build:watch": "ng build cow-catalog --watch --configuration development --verbose",
+    
+    "start:mfe:detail:dev": "ng serve cow-detail --configuration development --port 4202",
+    "dev:mfe:detail:build:watch": "ng build cow-detail --watch --configuration development --verbose",
+    
+    "prod:host:platform:build": "ng build platform --configuration production --output-path=dist/platform-prod --delete-output-path",
+    "prod:mfe:catalog:build": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog-prod --delete-output-path",
+    "prod:mfe:detail:build": "ng build cow-detail --configuration production --output-path=dist/cow-detail-prod --delete-output-path",
+    
+    "build:host:platform:gh": "ng build platform --configuration production --output-path=dist/platform --base-href '/telus-agriculture-cow-catalog/'",
+    "build:mfe:catalog:gh": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog --base-href '/telus-agriculture-cow-catalog/cow-catalog/'",
+    "build:mfe:detail:gh": "ng build cow-detail --configuration production --output-path=dist/cow-detail --base-href '/telus-agriculture-cow-catalog/cow-detail/'",
+    
+    "deploy:host:platform": "npm run build:host:platform:gh && npx angular-cli-ghpages --dir=dist/platform --branch=gh-pages --message='Deploy platform (host)'",
+    "deploy:mfe:catalog": "npm run build:mfe:catalog:gh && npx angular-cli-ghpages --dir=dist/cow-catalog --branch=gh-pages --message='Deploy cow-catalog'",
+    "deploy:mfe:detail": "npm run build:mfe:detail:gh && npx angular-cli-ghpages --dir=dist/cow-detail --branch=gh-pages --message='Deploy cow-detail'",
+    
+    "deploy:all": "npm run deploy:host:platform && npm run deploy:mfe:detail && npm run deploy:mfe:catalog",
+    "build:all:prod": "npm run prod:host:platform:build && npm run prod:mfe:catalog:build && npm run prod:mfe:detail:build"
   },
   "private": true,
   "dependencies": {

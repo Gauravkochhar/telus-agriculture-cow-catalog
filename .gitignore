@@ -20,7 +20,6 @@ yarn.lock
 # -----------------------
 # Environment files
 # -----------------------
-/projects/**/src/environments/*.ts
 !.gitkeep
 
 # -----------------------
