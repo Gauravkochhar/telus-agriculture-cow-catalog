@@ -17,6 +17,10 @@ export class CowService {
     return of(this.cows);
   }
 
+  addCow(cow: Cow): void {
+    this.cows.unshift(cow);
+  }
+
   getCowById(id: number): Observable<Cow | undefined> {
     return of(this.cows.find(cow => cow.id === id));
   }

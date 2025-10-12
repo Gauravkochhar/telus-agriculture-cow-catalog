@@ -70,8 +70,12 @@ export class CowFormComponent implements OnInit {
    */
   onSubmit(): void {
     if (this.cowForm.valid) {
+      const date = new Date();
       this._toastService.success('Success', 'New cow added successfully.');
-      this.cowAdded.emit(this.cowForm.value);
+      this.cowAdded.emit({
+        ...this.cowForm.value,
+        id: date.getMilliseconds()
+      });
     }
   }
 }

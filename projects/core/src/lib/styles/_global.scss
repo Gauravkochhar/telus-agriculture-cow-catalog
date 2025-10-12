@@ -17,8 +17,18 @@ body {
   max-width: 90vw;
 }
 
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .add-cow-dialog-content {
   @media (max-width: 500px) {
     --p-dialog-content-padding: 0px;
   }
+}
+
+.cow-filter-drawer .p-drawer-header {
+  align-self: flex-end !important;
 }

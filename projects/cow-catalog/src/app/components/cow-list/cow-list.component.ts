@@ -81,6 +81,7 @@ export class CowListComponent implements OnInit, OnDestroy {
   onCowFormSubmit(event: Cow) {
     this.displayAddCowForm = false;
     this.cowList = [event, ...this.cowList];
+    this._cowService.addCow(event);
     this.applyFilters(this._cowService.getRecentAppliedFilter());
   }
 
