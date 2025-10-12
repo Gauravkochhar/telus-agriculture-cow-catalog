@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { environment } from '../environments/environment';
+
 
 const routes: Routes = [
   {
@@ -8,7 +10,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        remoteEntry: environment.catalogUrl,
         exposedModule: './Module'
       }).then(m => m.AppModule),
   },
@@ -17,7 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        remoteEntry: environment.detailUrl,
         exposedModule: './Module'
       }).then(m => m.AppModule),
   },

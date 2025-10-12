@@ -12,27 +12,24 @@
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
     
     "start:host:platform:dev": "ng serve platform --configuration development --port 4200",
-    "dev:host:platform:build:watch": "ng build platform --watch --configuration development --verbose",
-    
     "start:mfe:catalog:dev": "ng serve cow-catalog --configuration development --port 4201",
-    "dev:mfe:catalog:build:watch": "ng build cow-catalog --watch --configuration development --verbose",
-    
     "start:mfe:detail:dev": "ng serve cow-detail --configuration development --port 4202",
+    
+    "dev:host:platform:build:watch": "ng build platform --watch --configuration development --verbose",
+    "dev:mfe:catalog:build:watch": "ng build cow-catalog --watch --configuration development --verbose",
     "dev:mfe:detail:build:watch": "ng build cow-detail --watch --configuration development --verbose",
     
     "prod:host:platform:build": "ng build platform --configuration production --output-path=dist/platform-prod --delete-output-path",
     "prod:mfe:catalog:build": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog-prod --delete-output-path",
     "prod:mfe:detail:build": "ng build cow-detail --configuration production --output-path=dist/cow-detail-prod --delete-output-path",
     
-    "build:host:platform:gh": "ng build platform --configuration production --output-path=dist/platform --base-href '/telus-agriculture-cow-catalog/'",
-    "build:mfe:catalog:gh": "ng build cow-catalog --configuration production --output-path=dist/cow-catalog --base-href '/telus-agriculture-cow-catalog/cow-catalog/'",
-    "build:mfe:detail:gh": "ng build cow-detail --configuration production --output-path=dist/cow-detail --base-href '/telus-agriculture-cow-catalog/cow-detail/'",
+    "prod:gh:host:platform:build": "ng build platform --configuration production --output-path=dist/gh-pages --base-href '/telus-agriculture-cow-catalog/'",
+    "prod:gh:mfe:catalog:build": "ng build cow-catalog --configuration production --output-path=dist/gh-pages/cow-catalog --base-href '/telus-agriculture-cow-catalog/cow-catalog/'",
+    "prod:gh:mfe:detail:build": "ng build cow-detail --configuration production --output-path=dist/gh-pages/cow-detail --base-href '/telus-agriculture-cow-catalog/cow-detail/'",
     
-    "deploy:host:platform": "npm run build:host:platform:gh && npx angular-cli-ghpages --dir=dist/platform --branch=gh-pages --message='Deploy platform (host)'",
-    "deploy:mfe:catalog": "npm run build:mfe:catalog:gh && npx angular-cli-ghpages --dir=dist/cow-catalog --branch=gh-pages --message='Deploy cow-catalog'",
-    "deploy:mfe:detail": "npm run build:mfe:detail:gh && npx angular-cli-ghpages --dir=dist/cow-detail --branch=gh-pages --message='Deploy cow-detail'",
+    "gh:clear:cache": "rm -rf node_modules/.cache/gh-pages",
+    "deploy:all": "gh-pages -d dist/gh-pages",
     
-    "deploy:all": "npm run deploy:host:platform && npm run deploy:mfe:detail && npm run deploy:mfe:catalog",
     "build:all:prod": "npm run prod:host:platform:build && npm run prod:mfe:catalog:build && npm run prod:mfe:detail:build"
   },
   "private": true,

@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { providePrimeNG } from 'primeng/config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import Aura from '@primeng/themes/aura';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -22,6 +23,7 @@ import Aura from '@primeng/themes/aura';
         }
       },
     }),
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent],
 })
