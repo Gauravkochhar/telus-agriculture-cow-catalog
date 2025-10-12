@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { CommonModule } from '@angular/common';
-import { Cow } from '@digital/core';
+import { Cow, ToastService } from '@digital/core';
 
 @Component({
   selector: 'app-cow-form',
@@ -27,6 +27,7 @@ import { Cow } from '@digital/core';
   styleUrls: ['./cow-form.component.scss'],
 })
 export class CowFormComponent implements OnInit {
+  private _toastService = inject(ToastService);
   public cowForm!: FormGroup;
 
   public statuses = [
@@ -69,6 +70,7 @@ export class CowFormComponent implements OnInit {
    */
   onSubmit(): void {
     if (this.cowForm.valid) {
+      this._toastService.success('Success', 'New cow added successfully.');
       this.cowAdded.emit(this.cowForm.value);
     }
   }

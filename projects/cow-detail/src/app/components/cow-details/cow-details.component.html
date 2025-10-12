@@ -27,6 +27,7 @@
     <h4>Recent Events</h4>
     <div *ngIf="cow.events?.length; else noEvents">
       <div
+        pRipple
         class="cow-event-card mb-3"
         *ngFor="let event of cow.events | slice:0:10; let i = index"
       >

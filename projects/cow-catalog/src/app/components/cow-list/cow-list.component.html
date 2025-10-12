@@ -1,4 +1,4 @@
-<div class="container mt-3 cow-list">
+<div class="container mt-0 mt-md-3 cow-list">
   <div class="row align-items-center mb-3">
     <div class="col-12 col-md-6">
       <h3 class="cow-list__title">Cows List</h3>
@@ -58,7 +58,9 @@
   [(visible)]="displayAddCowForm"
   [modal]="true"
   [closable]="true"
-  [style]="{ width: '800px' }">
+  [breakpoints]="{ '567px': '98vw' }"
+  [style]="{ width: '800px' }"
+  contentStyleClass="add-cow-dialog-content">
 
   <!-- Cow Form inside dialog -->
   <app-cow-form (cowAdded)="onCowFormSubmit($event)"></app-cow-form>

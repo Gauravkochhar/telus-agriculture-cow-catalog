@@ -12,3 +12,13 @@ body {
     padding: 10px;
   }
 }
+
+.p-toast {
+  max-width: 90vw;
+}
+
+.add-cow-dialog-content {
+  @media (max-width: 500px) {
+    --p-dialog-content-padding: 0px;
+  }
+}

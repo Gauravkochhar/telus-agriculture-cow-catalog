@@ -23,7 +23,8 @@ const routes: Routes = [
         exposedModule: './Module'
       }).then(m => m.AppModule),
   },
-  { path: '', redirectTo: 'catalog', pathMatch: 'full' }
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
+  { path: '**', redirectTo: 'catalog' }
 ];
 
 

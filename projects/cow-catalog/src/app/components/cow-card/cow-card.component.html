@@ -11,7 +11,13 @@
 
   <div class="cow-card__body">
     <div class="cow-card__row">
-      <i class="pi pi-user"></i> <span>{{ cow()?.gender }}</span>
+      <i class="pi pi-user"></i> 
+      <span>
+        {{ cow()?.gender }}
+        @if(cow()?.weight) {
+          | <small>{{ cow()?.weight }} kg</small>
+        }
+      </span>
     </div>
     <div class="cow-card__row">
       <i class="pi pi-map-marker"></i> <span><strong>Pen:</strong> {{ cow()?.pen }}</span>

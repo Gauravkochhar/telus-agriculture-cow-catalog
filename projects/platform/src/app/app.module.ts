@@ -9,10 +9,11 @@ import { providePrimeNG } from 'primeng/config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import Aura from '@primeng/themes/aura';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PrimengModule } from '@digital/core';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, PrimengModule],
   providers: [
     provideAnimationsAsync(),
     providePrimeNG({

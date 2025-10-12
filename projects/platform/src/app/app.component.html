@@ -1,7 +1,14 @@
 <div class="app-container d-flex flex-column min-vh-100">
+  <p-toast [position]="isTablet() || isMobile() ? TOAST_POSITION.BottomCenter: TOAST_POSITION.TopRight"></p-toast>
   <app-header></app-header>
 
   <main class="flex-fill container mt-3">
+    @if(isLoadingRoute()) {
+      <div class="text-center mt-5">
+        <i class="pi pi-spin pi-spinner" style="font-size: 2em"></i>
+        <p class="mt-3">Getting Everything Ready...</p>
+      </div>
+    }
     <router-outlet></router-outlet>
   </main>
 

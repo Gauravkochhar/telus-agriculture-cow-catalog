@@ -98,14 +98,14 @@ export class CowListComponent implements OnInit, OnDestroy {
    */
   applyFilters(filters: any): void {
     this._cowService.setRecentAppliedFilter(filters);
-    const search = filters.search?.toLowerCase() || '';
+    const search = filters?.search?.toLowerCase() || '';
     const statusFilter: string[] = filters?.selectedStatuses || [];
 
     this.filteredCowList = this.cowList?.filter((cow) => {
       const matchesSearch = [cow?.earTag?.toLowerCase(), cow?.pen?.toLowerCase()].some((e) =>
         e?.includes(search)
       );
-      const matchesStatus = statusFilter.length ? statusFilter.includes(cow?.status) : true;
+      const matchesStatus = statusFilter?.length ? statusFilter?.includes(cow?.status) : true;
       return matchesSearch && matchesStatus;
     });
   }

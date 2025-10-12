@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, Input, output } from '@angular/core';
-import { Cow, CowStatus } from '@digital/core';
+import { Cow, CowStatus, PrimengModule } from '@digital/core';
 
 @Component({
   selector: 'app-cow-card',
-  imports: [CommonModule],
+  imports: [CommonModule, PrimengModule],
   templateUrl: './cow-card.component.html',
   styleUrl: './cow-card.component.scss'
 })
